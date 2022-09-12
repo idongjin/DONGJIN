@@ -1,0 +1,26 @@
+Web VPython 3.2
+ball=sphere(radius=0.2) 
+
+ball.pos=vec(-2,0,0)
+ball.v=vec(0.8,0,0) #단위m/s
+
+t=0
+dt=1
+
+attach_arrow(ball, "v", shaftwidth=0.1, color=color.green)
+
+scene.waitfor('click')
+ball.pos=ball.pos+ball.v*dt
+t=t+dt
+
+scene.waitfor('click')
+ball.pos=ball.pos+ball.v*dt
+t=t+dt
+
+scene.waitfor('click')
+ball.pos=ball.pos+ball.v*dt
+t=t+dt
+
+scene.waitfor('click')
+ball.pos=ball.pos+ball.v*dt
+t=t+dt
