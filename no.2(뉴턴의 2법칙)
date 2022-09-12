@@ -1,0 +1,5 @@
+Web VPython 3.2
+f=2 #단위N
+m=1 #단위kg
+a=f/m #단위m/s^2
+print("가속도=", a, "m/s^2")
