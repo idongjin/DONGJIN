@@ -1,0 +1,31 @@
+int led = 13 ; // 아두이노 내장 LED
+int digitalPin = 3; // 센서 디지털 인터페이스
+int analogPin = A0; // 센서 아날로그 인터페이스
+int digitalVal ; // digital readings
+int analogVal; // analog readings
+void setup ()
+{
+  pinMode (led, OUTPUT); 
+  pinMode (digitalPin, INPUT); 
+  pinMode(analogPin, INPUT); 
+  Serial.begin(9600);
+  int digitalVal = 0;
+}
+void loop ()
+{
+
+  digitalVal = digitalRead(digitalPin) ; 
+  if (digitalVal == HIGH) // 자기장이 감지가 안되면 led를 킨다.
+  {
+    digitalWrite (led, HIGH);
+  }
+  else
+  {
+    digitalWrite (led, LOW);
+  }
+  
+  analogVal = analogRead(analogPin);
+  Serial.print(analogVal); // 아날로그 자기장값을 출력한다.
+  Serial.println(digitalVal); // 디지털 값을 출력한다.
+  delay(100);
+}
