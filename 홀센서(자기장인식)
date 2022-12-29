@@ -1,0 +1,14 @@
+void setup()
+{
+  Serial.begin(9600);
+  pinMode (A0, INPUT);
+  pinMode (A1, INPUT);
+}
+
+void loop(){
+  delay(100);
+  Serial.print(analogRead(A0));
+  Serial.print("\t");
+  Serial.print(digitalRead(A1));
+
+}
