@@ -1,0 +1,35 @@
+Web VPython 3.2
+Earth=sphere(pos=vec(0,0,0), radius=6400000, texture=textures.earth)
+Moon=sphere(pos=vec(385000e3,0,0), radius=1737000, make_trail=True)
+
+sf=6
+Earth.radius=sf*Earth.radius
+Moon.radius=sf*Moon.radius
+
+G=6.67e-11
+Earth.mass=5.972e24
+Moon.mass=7.347e22
+Earth.v=vec(0,0,0)
+Moon.v=vec(0,0,0)
+
+t=0
+dt=60
+
+while True:
+    rate(1000)
+    
+    r=Moon.pos-Earth.pos
+    Moon.f=-G*Earth.mass*Moon.mass/mag(r)**2*norm(r)
+    Earth.f=-Moon.f
+
+    Moon.v=Moon.v+Moon.f/Moon.mass*dt
+    Earth.v=Earth.v+Earth.f/Earth.mass*dt
+    Moon.pos=Moon.pos+Moon.v*dt
+    Earth.pos=Earth.pos+Earth.v*dt
+
+    t=t+dt
+
+    if Earth.radius+Moon.radius > mag(r):
+      print("Collision!")
+      print(t/60/60/24, "days")
+      break
